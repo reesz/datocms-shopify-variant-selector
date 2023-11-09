@@ -1,5 +1,5 @@
 import { ValidConfig } from '../types';
-type PriceType = {
+export type PriceType = {
   amount: string;
   currencyCode: string;
 };

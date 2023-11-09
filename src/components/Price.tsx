@@ -1,6 +1,6 @@
-import { PriceTypes } from "../utils/ShopifyClient";
+import { PriceType } from "../utils/ShopifyClient";
 
-export default function Price({ amount, currencyCode }: PriceTypes) {
+export default function Price({ amount, currencyCode }: PriceType) {
   return (
     <span>
       {currencyCode}
