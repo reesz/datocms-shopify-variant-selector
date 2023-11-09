@@ -1,8 +1,8 @@
 {
-  "name": "datocms-plugin-shopify-product",
-  "homepage": "https://github.com/datocms/plugins/tree/master/shopify-product#readme",
-  "description": "A plugin that allows users to search and select Shopify products",
-  "author": "DatoCMS <support@datocms.com>",
+  "name": "datocms-plugin-shopify-product-variation",
+  "homepage": "https://github.com/reesz/datocms-shopify-variant-selector/#readme",
+  "description": "A plugin that allows users to search and select Shopify products with variations",
+  "author": "Fw-",
   "license": "ISC",
   "version": "1.0.0",
   "keywords": [
@@ -68,7 +68,7 @@
     "cross-env": "^7.0.3"
   },
   "datoCmsPlugin": {
-    "title": "Shopify product",
+    "title": "Shopify variant",
     "previewImage": "docs/demo.gif",
     "coverImage": "docs/cover.jpg",
     "entryPoint": "build/index.html"

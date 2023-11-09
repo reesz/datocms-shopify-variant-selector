@@ -40,6 +40,10 @@ export default function BrowseProductsModal({ctx}: { ctx: RenderModalCtx }) {
         performSearch(client, query);
     }, [performSearch, query, client]);
 
+    useEffect(() => {
+        submitOptions(options);
+    }, [options, submitOptions]);
+
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         performSearch(client, sku);
@@ -78,7 +82,16 @@ export default function BrowseProductsModal({ctx}: { ctx: RenderModalCtx }) {
                             {products.map((product: Product) => (
                                 <button
                                     key={product.handle}
-                                    onClick={() => setProduct(product)}
+                                    onClick={() => {
+                                        let defaultOptions = {};
+                                        product.options.map((option) => {
+                                            defaultOptions = {...defaultOptions, [option.name]: option.values[0]};
+                                        });
+                                        console.log("defaultOptions", defaultOptions);
+                                        setOptions(defaultOptions);
+                                        submitOptions(defaultOptions);
+                                        setProduct(product);
+                                    }}
                                     className={s['product']}
                                 >
                                     <div
@@ -118,8 +131,7 @@ export default function BrowseProductsModal({ctx}: { ctx: RenderModalCtx }) {
                     )}
 
                     <button
-                        onClick={() => {
-                            submitOptions(options);
+                        onClick={async () => {
                             return ctx.resolve({product, options});
                         }}
                         className={s['submit']}

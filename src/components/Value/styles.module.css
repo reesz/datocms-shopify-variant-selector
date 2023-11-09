@@ -89,3 +89,7 @@
 .reset:hover {
   opacity: 0.8;
 }
+
+.product__selectedoptions {
+  display: block;
+}

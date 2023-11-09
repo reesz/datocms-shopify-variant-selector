@@ -11,6 +11,7 @@ export type State = {
   products: Record<string, { result: Product | null; status: Status }>;
   options: Record<string, string>;
   setOptions(options: Record<string, string>): void;
+  getOptions(): Record<string, string>;
   getProduct(handle: string): {
     status: Status;
     product: Product | null;
@@ -36,10 +37,14 @@ const useStore = create(
         products: {},
         searches: {},
         options: {},
-        setOptions(options: Record<string, any>) {
+        setOptions(newOptions: Record<string, any>) {
+          console.log("state setOptions", newOptions);
           set((state) => {
-            state.options = options;
+            state.options = newOptions;
           });
+        },
+        getOptions() {
+            return (get() as State).options;
         },
         getProduct(handle: string) {
           const selectedProduct = (get() as State).products[handle];
@@ -119,7 +124,7 @@ const useStore = create(
       };
     },
     {
-      name: 'datocms-plugin-shopify-product',
+      name: 'datocms-plugin-shopify-product-variant',
     },
   ),
 );

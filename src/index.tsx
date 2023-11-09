@@ -56,7 +56,7 @@ connect({
     return [
       {
         id: FIELD_EXTENSION_ID,
-        name: 'Shopify Product',
+        name: 'Shopify Variation Selector',
         type: 'editor',
         fieldTypes: ['string', 'json'],
       },

@@ -35,9 +35,8 @@ export default function Value({value, onReset}: ValueProps) {
         useCallback((state) => (state as State).getProduct(value), [value]),
     );
 
-    const options = useStore(
-        useCallback((state) => (state as State).options, [value]),
-    );
+    const options = useStore((state) => (state as State).getOptions());
+    console.log("loadedOptions", options);
 
     const fetchProductByHandle = useStore(
         (state) => (state as State).fetchProductByHandle,

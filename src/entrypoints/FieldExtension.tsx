@@ -9,6 +9,8 @@ type PropTypes = {
   ctx: RenderFieldExtensionCtx;
 };
 
+export type PluginResolveType = {'product': Product, 'options': any};
+
 export default function FieldExtension({ ctx }: PropTypes) {
   const fieldType = ctx.field.attributes.field_type;
 
@@ -18,7 +20,7 @@ export default function FieldExtension({ ctx }: PropTypes) {
 
   switch (fieldType) {
     case 'json':
-      shopifyHandle = rawValue && JSON.parse(rawValue).handle;
+      shopifyHandle = rawValue && JSON.parse(rawValue).product.handle;
       break;
     case 'string':
       shopifyHandle = rawValue;
@@ -28,10 +30,12 @@ export default function FieldExtension({ ctx }: PropTypes) {
       break;
   }
 
-  const handleSelect = (product: Product) => {
+
+
+  const handleSelect = (res: PluginResolveType) => {
     ctx.setFieldValue(
       ctx.fieldPath,
-      fieldType === 'json' ? JSON.stringify(product) : product.handle,
+      fieldType === 'json' ? JSON.stringify(res) : res.product.handle,
     );
   };
 

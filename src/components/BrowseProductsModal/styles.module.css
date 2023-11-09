@@ -92,6 +92,7 @@
 }
 
 .variation__options > * {
+  flex: 1;
   margin-left: 20px;
   margin-bottom: 20px;
 }
